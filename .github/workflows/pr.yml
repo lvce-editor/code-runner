@@ -16,6 +16,10 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: npm
+      - name: Use Git Bash for Bash file execution on Windows
+        if: runner.os == 'Windows'
+        shell: bash
+        run: echo 'C:/Program Files/Git/bin' >> "$GITHUB_PATH"
       - run: npm ci
       - run: npm run type-check
       - run: npm test
