@@ -1,0 +1,14 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "packages/extension"
+    },
+    {
+      "path": "packages/build"
+    },
+    {
+      "path": "packages/e2e"
+    }
+  ]
+}

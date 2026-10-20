@@ -1,0 +1,30 @@
+{
+  "name": "@lvce-editor/code-runner-monorepo",
+  "version": "0.0.0-dev",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "node packages/build/src/build.ts",
+    "build:static": "node packages/build/src/build-static.ts",
+    "test": "node --test packages/extension/test/*.test.ts",
+    "type-check": "tsc -b",
+    "lint": "prettier --check .",
+    "e2e:headless": "npm run e2e:headless --workspace=packages/e2e",
+    "e2e:firefox:headless": "npm run e2e:headless --workspace=packages/e2e -- --browser=firefox",
+    "e2e:webkit:headless": "npm run e2e:headless --workspace=packages/e2e -- --browser=webkit",
+    "dev": "npm run build && node node_modules/@lvce-editor/server/bin/server.js --only-extension=packages/extension --test-path=packages/e2e"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3",
+    "@types/node": "^25.0.3",
+    "prettier": "^3.9.6"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 150
+  }
+}

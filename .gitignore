@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.tmp/
+*.tsbuildinfo
+extension.tar.br
+playwright-report/
+test-results/
+renderer-worker-traces/
+packages/extension/dist/
+packages/e2e/fixtures/*/dist/

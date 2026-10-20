@@ -1,0 +1,15 @@
+{
+  "id": "test.code-runner-permission-invalid",
+  "name": "Code Runner Permission invalid",
+  "browser": "dist/main.js",
+  "isolated": true,
+  "activation": ["onCommand:codeRunnerPermissioninvalid.run"],
+  "commands": [
+    {
+      "id": "codeRunnerPermissioninvalid.run",
+      "title": "Denied Runner",
+      "internal": true
+    }
+  ],
+  "permissions": "terminal.execute"
+}

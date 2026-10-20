@@ -1,0 +1,9 @@
+{
+  "name": "builtin.code-runner",
+  "version": "0.0.0-dev",
+  "type": "module",
+  "license": "MIT",
+  "devDependencies": {
+    "@lvce-editor/api": "9.52.0"
+  }
+}
