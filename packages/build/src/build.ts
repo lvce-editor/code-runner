@@ -36,4 +36,5 @@ manifest.version = tag?.startsWith('v') ? tag.slice(1) : '0.0.0-dev'
 await writeFile(join(out, 'extension.json'), JSON.stringify(manifest, null, 2) + '\n')
 await cp(join(extension, 'dist'), join(out, 'dist'), { recursive: true })
 await cp(join(root, 'README.md'), join(out, 'README.md'))
+await cp(join(root, 'LICENSE'), join(out, 'LICENSE'))
 await packageExtension({ highestCompression: true, inDir: out, outFile: join(root, 'extension.tar.br') })
