@@ -7,7 +7,6 @@
     "packages/*"
   ],
   "scripts": {
-    "diagnose:windows": "node scripts/diagnose-windows-runtime.mjs",
     "build": "node packages/build/src/build.ts",
     "build:static": "node packages/build/src/build-static.ts",
     "test": "node --test packages/extension/test/*.test.ts",
