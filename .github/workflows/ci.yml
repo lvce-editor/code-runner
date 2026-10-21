@@ -39,13 +39,13 @@ jobs:
         if: runner.os == 'Linux'
         run: npx playwright install-deps chromium firefox webkit
         working-directory: packages/e2e
-      - run: npm run e2e:headless
+      - run: npm run e2e:headless -- --trace-renderer-worker
         env:
           PLAYWRIGHT_BROWSERS_PATH: 0
-      - run: npm run e2e:firefox:headless
+      - run: npm run e2e:firefox:headless -- --trace-renderer-worker
         env:
           PLAYWRIGHT_BROWSERS_PATH: 0
-      - run: npm run e2e:webkit:headless
+      - run: npm run e2e:webkit:headless -- --trace-renderer-worker
         if: runner.os != 'Windows'
         env:
           PLAYWRIGHT_BROWSERS_PATH: 0

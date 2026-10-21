@@ -1,4 +1,4 @@
-import { deepStrictEqual, strictEqual } from 'node:assert/strict'
+import { deepStrictEqual, strictEqual, throws } from 'node:assert/strict'
 import { test } from 'node:test'
 import { getExecution } from '../src/parts/GetExecution/GetExecution.ts'
 
@@ -34,3 +34,7 @@ for (const uri of [
     strictEqual(getExecution(uri), undefined)
   })
 }
+
+test('rejects encoded null bytes before offering a process execution', () => {
+  throws(() => getExecution('file:///workspace/a%00.js'), /null bytes/)
+})
