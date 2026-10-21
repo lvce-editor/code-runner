@@ -1,0 +1,14 @@
+{
+  "name": "@lvce-editor/code-runner-e2e",
+  "version": "0.0.0-dev",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "e2e:headless": "node ../../node_modules/@lvce-editor/test-with-playwright/bin/test-with-playwright.js --only-extension=../extension --test-path=. --headless"
+  },
+  "devDependencies": {
+    "@lvce-editor/test-with-playwright": "22.43.0",
+    "@lvce-editor/server": "0.124.22",
+    "@lvce-editor/api": "9.52.0"
+  }
+}

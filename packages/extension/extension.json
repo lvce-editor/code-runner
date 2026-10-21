@@ -1,0 +1,18 @@
+{
+  "id": "builtin.code-runner",
+  "name": "Code Runner",
+  "description": "Run JavaScript, TypeScript and Bash files in the integrated terminal.",
+  "repository": "https://github.com/lvce-editor/code-runner",
+  "browser": "dist/codeRunnerMain.js",
+  "isolated": true,
+  "permissions": ["terminal.execute"],
+  "activation": ["onExplorerContextMenu", "onCommand:codeRunner.run"],
+  "commands": [
+    {
+      "id": "codeRunner.run",
+      "title": "Run File",
+      "internal": true
+    }
+  ],
+  "categories": ["Other"]
+}
