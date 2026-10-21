@@ -18,5 +18,7 @@ export const getExecution = (uri: string): Execution | undefined => {
   const path = filePath(url)
   const command = /\.(?:[cm]?js|[cm]?ts)$/.test(path) ? 'node' : /\.(?:sh|bash)$/.test(path) ? 'bash' : ''
   if (!command) return undefined
-  return { args: ['--', path], command, cwd: filePath(new URL('.', url)) }
+  // Windows PTYs look up the exact executable name without adding .exe.
+  const executable = /^(?:[a-z]:\/|\/\/)/i.test(path) ? `${command}.exe` : command
+  return { args: ['--', path], command: executable, cwd: filePath(new URL('.', url)) }
 }

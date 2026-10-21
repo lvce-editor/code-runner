@@ -18,7 +18,27 @@ test('preserves spaces, quotes and shell metacharacters as one process argument'
 })
 
 test('handles Windows drive paths without a leading slash', () => {
-  deepStrictEqual(getExecution('file:///C:/My%20Project/test.ts'), { args: ['--', 'C:/My Project/test.ts'], command: 'node', cwd: 'C:/My Project/' })
+  deepStrictEqual(getExecution('file:///C:/My%20Project/test.ts'), {
+    args: ['--', 'C:/My Project/test.ts'],
+    command: 'node.exe',
+    cwd: 'C:/My Project/',
+  })
+})
+
+test('selects the Windows Bash executable for drive paths', () => {
+  deepStrictEqual(getExecution('file:///C:/My%20Project/test.sh'), {
+    args: ['--', 'C:/My Project/test.sh'],
+    command: 'bash.exe',
+    cwd: 'C:/My Project/',
+  })
+})
+
+test('selects the Windows executable for UNC paths', () => {
+  deepStrictEqual(getExecution('file://server/share/test.js'), {
+    args: ['--', '//server/share/test.js'],
+    command: 'node.exe',
+    cwd: '//server/share/',
+  })
 })
 
 for (const uri of [
