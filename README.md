@@ -21,4 +21,5 @@ Use the Node version in `.nvmrc`, then `npm ci`, `npm test`, `npm run type-check
 `npm run build`, and `npm run e2e:headless`. `npm run build:static` creates the
 GitHub Pages demo. CI follows the language-features-typescript, Prettier and HTML
 extension conventions with OS/browser checks, a bundled extension archive and a
-Pages deployment after the main-branch matrix passes.
+Pages deployment after the main-branch matrix passes. The static Pages demo has no
+local process backend; use the local server to exercise terminal execution.
