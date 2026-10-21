@@ -22,8 +22,20 @@ jobs:
           cache: npm
       - name: Use Git Bash for Bash file execution on Windows
         if: runner.os == 'Windows'
-        shell: bash
-        run: echo 'C:/Program Files/Git/bin' >> "$GITHUB_PATH"
+        shell: pwsh
+        run: |
+          $gitBashDirectory = 'C:\Program Files\Git\bin'
+          if (!(Test-Path "$gitBashDirectory\bash.exe")) { throw 'Git Bash is required for Bash execution tests' }
+          $gitBashDirectory | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      - name: Verify Windows Bash runtime
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $bashPath = (Get-Command bash.exe).Source
+          Write-Output "Resolved Bash: $bashPath"
+          if ($bashPath -ne 'C:\Program Files\Git\bin\bash.exe') { throw "Expected Git Bash, found $bashPath" }
+          bash.exe --version
+          if ($LASTEXITCODE -ne 0) { throw 'Git Bash could not start' }
       - run: npm ci
       - run: npm run type-check
       - run: npm test
