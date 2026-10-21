@@ -12,5 +12,5 @@ export const test: Test = async ({ ContextMenu, expect, Explorer, FileSystem, Lo
   await Explorer.openContextMenu(0)
   await ContextMenu.selectItem('Run')
   await expect(Locator('.XtermTerminal')).toContainText('clicked-path-output')
-  await expect(Locator('.XtermTerminal')).not.toContainText('wrong-selected-file')
+  await expect(Locator('.XtermTerminal').locator('text=wrong-selected-file')).toHaveCount(0)
 }

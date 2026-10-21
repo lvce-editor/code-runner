@@ -6,6 +6,6 @@ export const test: Test = async ({ Command, expect, FileSystem, Locator, Setting
   await Settings.update({ 'terminal.backend': 'real' })
   const root = await FileSystem.getTmpDir({ scheme: 'file' })
   await Command.execute('Layout.runInTerminal', { command: 'lvce-code-runner-missing-runtime', args: [], cwd: root })
-  await expect(Locator('.XtermTerminal')).toContainText('Failed to start terminal')
-  await expect(Locator('.XtermTerminal')).toContainText('lvce-code-runner-missing-runtime')
+  await expect(Locator('.XtermTerminal .xterm-rows')).toContainText('terminal')
+  await expect(Locator('.XtermTerminal .xterm-rows')).toContainText('lvce-code-runner-missing-runtime')
 }

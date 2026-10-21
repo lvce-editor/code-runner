@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "@lvce-editor/test-with-playwright": "22.43.0",
-    "@lvce-editor/server": "0.124.14",
+    "@lvce-editor/server": "0.124.17",
     "@lvce-editor/api": "9.52.0"
   }
 }
